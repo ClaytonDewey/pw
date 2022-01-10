@@ -9,12 +9,8 @@ export class AppComponent {
     includeLetters = false;
     includeNumbers = false;
     includeSymbols = false;
+    length = 0;
     password = "";
-
-    onButtonClick() {
-        console.log(this.includeSymbols);
-        this.password = "MY PASSWORD!!!";
-    }
 
     onChangeUseLetters() {
         this.includeLetters = !this.includeLetters;
@@ -26,5 +22,25 @@ export class AppComponent {
 
     onChangeUseSymbols() {
         this.includeSymbols = !this.includeSymbols;
+    }
+
+    onChangeLength(event: Event) {
+        const target = event.target as HTMLInputElement;
+        const parsedValue = parseInt(target.value);
+
+        if (!isNaN(parsedValue)) {
+            this.length = parsedValue;
+        }
+    }
+
+    onButtonClick() {
+        console.log(`
+            About to generate a password with the following:
+            Includes letters: ${this.includeLetters}
+            Includes numbers: ${this.includeNumbers}
+            Includes symbols: ${this.includeSymbols}
+            Length: ${this.length}
+        `);
+        this.password = "MY PASSWORD!!!";
     }
 }
