@@ -16,7 +16,7 @@ export class AppComponent {
         this.includeLetters = !this.includeLetters;
     }
 
-    onChangeUseNumber() {
+    onChangeUseNumbers() {
         this.includeNumbers = !this.includeNumbers;
     }
 
