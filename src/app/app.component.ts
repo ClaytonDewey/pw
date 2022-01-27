@@ -6,22 +6,32 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    includeLetters = false;
-    includeNumbers = false;
-    includeSymbols = false;
-    length = 0;
+    includeSymbols = true;
+    includeNumbers = true;
+    includeLetters = true;
+    includeUpperCaseLetters = false;
+    excludeAmbiguousChar = true;
+    length = 15;
     password = "";
 
-    onChangeUseLetters() {
-        this.includeLetters = !this.includeLetters;
+    onChangeUseSymbols() {
+        this.includeSymbols = !this.includeSymbols;
     }
 
     onChangeUseNumbers() {
         this.includeNumbers = !this.includeNumbers;
     }
 
-    onChangeUseSymbols() {
-        this.includeSymbols = !this.includeSymbols;
+    onChangeUseLetters() {
+        this.includeLetters = !this.includeLetters;
+    }
+
+    onChangeUseUppercaseLetters() {
+        this.includeUpperCaseLetters = !this.includeUpperCaseLetters;
+    }
+
+    onChangeAmbiguousChar() {
+        this.excludeAmbiguousChar = !this.excludeAmbiguousChar;
     }
 
     onChangeLength(event: Event) {
@@ -34,22 +44,33 @@ export class AppComponent {
     }
 
     onButtonClick() {
+        const symbols = '!@#$%^&*+=-_';
         const numbers = '1234567890';
-        const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const symbols = '!@#$%^&*()';
+        const letters = 'abcdefghijklmnopqrstuvwxyz';
+        const upperCaseLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const ambiguousChar = '{}[]()/\\\'"`~,;:.<>'
 
         let validChars = '';
-        if (this.includeLetters) {
-            validChars += letters;
+        if (this.includeSymbols) {
+            validChars += symbols;
         }
 
         if (this.includeNumbers) {
             validChars += numbers;
+        }    
+
+        if (this.includeLetters) {
+            validChars += letters;
+        }    
+
+        if (this.includeUpperCaseLetters) {
+            validChars += upperCaseLetter;
         }
 
-        if (this.includeSymbols) {
-            validChars += symbols;
+        if (this.excludeAmbiguousChar) {
+            validChars += ambiguousChar;
         }
+
 
         let generatedPassword = '';
         for (let i = 0; i < this.length; i++) {
