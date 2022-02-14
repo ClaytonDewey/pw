@@ -8,7 +8,9 @@
                 <label>Length</label>
 
                 <div class="select is-fullwidth">
-                    <select class="input" (input)="onChangeLength($event)" name="length" id="dropdown"></select>
+                    <select class="input" (input)="onChangeLength($event)" name="length" id="dropdown">
+                        <option disabled value="weak">Weak</option>
+                    </select>
                 </div>
             </div>
 
