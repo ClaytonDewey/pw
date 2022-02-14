@@ -43,6 +43,21 @@ export class AppComponent {
         }
     }
 
+    generateDropdown() {
+        const dropdown = document.getElementById("dropdown");
+        let contents = "";
+
+        for (let i = 1; i <=50; i++) {
+            if (i === 15) {
+                contents += `<option selected value=${i}>${i}</option>`
+            } else {
+                contents += `<option value=${i}>${i}</option>`
+            }
+        }
+
+        dropdown!.innerHTML = contents;
+    }
+
     onButtonClick() {
         const symbols = '!@#$%^&*+=-_';
         const numbers = '1234567890';
@@ -78,5 +93,9 @@ export class AppComponent {
             generatedPassword += validChars[index];
         }
         this.password = generatedPassword;
+    }
+
+    ngOnInit(): void {
+        this.generateDropdown();
     }
 }

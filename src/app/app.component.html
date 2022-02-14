@@ -4,8 +4,12 @@
             <h1 class="title has-text-centered">Password Generator</h1>
 
             <div class="field">
+                <!-- <input class="input" type="number" (input)="onChangeLength($event)" value="{{ length }}" /> -->
                 <label>Length</label>
-                <input class="input" type="number" (input)="onChangeLength($event)" value="{{ length }}" />
+
+                <div class="select is-fullwidth">
+                    <select class="input" (input)="onChangeLength($event)" name="length" id="dropdown"></select>
+                </div>
             </div>
 
             <div class="field">
