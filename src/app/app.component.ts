@@ -47,15 +47,20 @@ export class AppComponent {
         const dropdown = document.getElementById("dropdown");
         let contents = "";
 
-        for (let i = 1; i <=50; i++) {
+        for (let i = 6; i <=50; i++) {
             if (i === 15) {
+                contents += `
+                <option value="${i}">${i}</option>
+                <option disabled value="strong">Strong</option>
+                `
+            } else if (i === 16) {
                 contents += `<option selected value=${i}>${i}</option>`
             } else {
                 contents += `<option value=${i}>${i}</option>`
             }
         }
 
-        dropdown!.innerHTML = contents;
+        dropdown!.innerHTML += contents;
     }
 
     onButtonClick() {
